@@ -2,5 +2,13 @@
 
 <p>here is a list of states...</p>
 
+<p><%= @states %></p>
+<form name = "form">
+	<select ="state_select">
+		<%@states.each do |state| %>
+			<option value = <<%= state[:id]%>><%= state[:name] %></option>
+		<% end %>
+	</select>
+</form>
 <!-- iterate through each state in the array and put them into list items individually -->
 

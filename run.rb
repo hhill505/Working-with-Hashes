@@ -8,6 +8,22 @@ get '/' do
 end
 
 get '/states' do
-  # code!
+
+	@states = []
+	state = {id: "WY",name: "Wyoming"}
+	@states << state
+	state = {id: "WI",name: "Wisconsin"}
+	@states << state
+	state = {id: "VA",name: "Virginia"}
+	@states << state
+	state = {id: "UT",name: "Utah"}
+	@states << state
+	state = {id: "TX",name: "Texas"}
+	@states << state
+
+	@states.sort_by! {|state| state[:name]}
+	
+
+  
   erb :states, layout: :main
 end
