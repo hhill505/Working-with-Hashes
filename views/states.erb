@@ -1,14 +1,34 @@
 <h1>State List</h1>
 
-<p>here is a list of states...</p>
+
+
+<%if params.has_key?("fullname")%>
+	<h2>Form Submitted</h2>
+<% end %> 
 
 
 <form name = "form">
-	<select ="state_select">
+	<p><label>Full Name:<input type = "text" name = "fullname" value = <%= params[:fullname] %>></label></p>
+	<p><label>Address:<textarea rows = "4" cols = "50" name = "address" ><%= params[:address] %></textarea></label></p>
+	<p><label>City:<input type = "text" name = "city" value = <%= params[:city] %>></label></p>
+
+	<p>State:<select name ="state">
+
 		<%@states.each do |state| %>
-			<option value = <<%= state[:id]%>><%= state[:name] %></option>
+			<option <% if params[:state] == state[:id] then %> selected <% end %>
+ value = <%= state[:id]%> ><%= state[:name] %></option>
 		<% end %>
-	</select>
+
+
+	</select></p>
+	<p><label>Zip:<input type = "text" name = "zip" value = <%= params[:zip] %>></label></p>
+	<p><label>I agree to submit this form.<input type = "checkbox" name = "agree" value = "1" <% if params.has_key?("agree") %>
+	checked 
+<% end %>></label></p>
+	<input type = "submit" value = "Submit">
 </form>
+
+
+
 <!-- iterate through each state in the array and put them into list items individually -->
 
